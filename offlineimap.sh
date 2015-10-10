@@ -39,9 +39,9 @@ pre() {
 
 post() {
   if [ $? -eq 0 ]; then
-    echo "Status: Success" >> ${LOG}
+    echo "Success" >> ${LOG}
   else
-    echo "Status: Failed" >> ${LOG}
+    echo "Failed" >> ${LOG}
   fi
   echo "[$(date)] Finished..\n" >> ${LOG}
 }
@@ -51,6 +51,7 @@ case $CMD in
     check
     killExisting
     pre
+    echo "Sync" >> ${LOG}
     ${SYNC}
     post
     ;;
@@ -59,6 +60,7 @@ case $CMD in
     check
     killExisting
     pre
+    echo "Quick" >> ${LOG}
     ${QUICK}
     post
     ;;
